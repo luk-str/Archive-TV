@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&display=swap");
+
+body {
+  box-sizing: border-box;
+  background-color: #f55;
+  font-family: "Recursive", sans-serif;
+}
+
+.player-container {
+  width: 80vw;
+  height: 60vw;
+  max-height: 60vh;
+  margin: 100px auto;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.player-title {
+    padding: 40px 0;
+}
+
+#player {
+    border: none;
+}
+
+#loading {
+    text-align: center;
+    font-size: 40px;
+    margin: 200px 0;
+}
