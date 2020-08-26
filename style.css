@@ -2,15 +2,27 @@
 
 body {
   box-sizing: border-box;
-  background-color: #f55;
+  background-color: #00c;
   font-family: "Recursive", sans-serif;
+  color: #eee;
 }
+
+/* .site-title {
+  text-align: center;
+  margin: 30px 0 0 0;
+  font-size: 24px;
+} */
 
 .player-container {
   width: 80vw;
   height: 60vw;
   max-height: 60vh;
-  margin: 100px auto;
+  margin: 50px auto;
+}
+
+.player-title {
+  padding: 40px 0;
+  line-height: 1.5em;
 }
 
 iframe {
@@ -18,16 +30,31 @@ iframe {
   height: 100%;
 }
 
-.player-title {
-    padding: 40px 0;
-}
-
 #player {
-    border: none;
+  border: none;
 }
 
 #loading {
-    text-align: center;
-    font-size: 40px;
-    margin: 200px 0;
+  text-align: center;
+  font-size: 40px;
+  margin: 200px 0;
+}
+
+.btn {
+  border: none;
+  padding: 1em 2em;
+  display: block;
+  margin: 180px auto;
+  font-family: "Recursive", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #eee;
+  border-radius: 90px;
+  color: #00c;
+  transition-duration: 0.1s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  transition-duration: 0.1s;
 }
