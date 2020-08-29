@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Internet Archive TV</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-
+    
     <!-- VIDEO JS -->
     <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet" />
     <script src="node_modules/video.js/dist/video.js"></script>
-
+    
     <!-- Add City Theme -->
     <link
-      href="https://unpkg.com/@videojs/themes@1/dist/city/index.css"
-      rel="stylesheet"
+    href="https://unpkg.com/@videojs/themes@1/dist/city/index.css"
+    rel="stylesheet"
     />
-
+    
     <!-- Add videojs-playlist -->
     <script src="node_modules/videojs-playlist/dist/videojs-playlist.js"></script>
-
+    
+    <link rel="stylesheet" href="css/style.css" />
     <script src="script/main.js" defer></script>
   </head>
 
@@ -28,17 +28,11 @@
     <nav></nav>
     <main>
       <article class="player-container">
-        <div class="player-title">
-          <span id="title"></span>
-          <br />
-          <span id="year"></span>
-        </div>
         <div id="loading">Loading...</div>
-        <!-- <video id="player"></video> -->
-        <video-js class="video-js vjs-theme-city"></video-js>
+        <video-js class="video-js vjs-theme-city vjs-matrix"></video-js>
       </article>
 
-      <button onClick="window.location.reload()" class="btn reload-btn">
+      <button onClick="window.location.reload()" class="btn btn-reload">
         ↻
       </button>
     </main>

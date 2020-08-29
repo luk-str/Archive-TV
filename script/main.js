@@ -1,25 +1,74 @@
-function generateSearchURL() {
-  const randomPageNumber = Math.floor(Math.random() * 1000);
-  return `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(moviesandfilms)+AND+mediatype:(movies)&fl[]=identifier&fl[]=title&fl[]date&sort[]=__random+desc&sort[]=&sort[]=&rows=10&page=${randomPageNumber}&output=json`;
-}
+// Search Options
+const searchPagesRange = 1000;
+const resultsAmount = 10;
 
-function getRandomFilm(films) {
-  const randomId = Math.floor(Math.random() * films.length);
-  return films[randomId];
-}
-
+// Player Options
 const playerOptions = {
-  autoplay: false,
-  controls: [
-    "play-large",
-    "play",
-    "progress",
-    "current-time",
-    "volume",
-    "airplay",
-    "fullscreen",
-  ],
+  controls: true,
+  autoplay: "any",
+  preload: "auto",
+  aspectRatio: "16:9",
+  language: "en",
+  userActions: {
+    hotkeys: true,
+  },
 };
+
+// Functions
+function getRandomPageNumber() {
+  return Math.floor(Math.random() * searchPagesRange);
+}
+
+function generateSearchURL() {
+  return `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(moviesandfilms)+AND+mediatype:(movies)&fl[]=identifier&fl[]=title&fl[]date&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${getRandomPageNumber()}&output=json`;
+}
+
+function removeLoadingPlaceholder() {
+  document.getElementById("loading").remove();
+}
+
+function getSourceObject(identifier, fileItem) {
+  const fileUrl = `https://archive.org/download/${identifier}/${fileItem.name}`;
+
+  if (fileItem.format === "h.264" || fileItem.format === "MPEG4") {
+    return {
+      src: fileUrl,
+      type: "video/mp4",
+    };
+  } else if (fileItem.format === "Ogg Video") {
+    return {
+      src: fileUrl,
+      type: "video/ogg",
+    };
+  }
+}
+
+function generateSourceList(identifier, fileList) {
+  let sourcesArray = [];
+  let files = fileList.filter((el) => {
+    return (
+      el.format === "h.264" ||
+      el.format === "MPEG4" ||
+      el.format === "Ogg Video"
+    );
+  });
+
+  files.forEach((el) => {
+    let source = getSourceObject(identifier, el);
+    sourcesArray.push(source);
+  });
+  return sourcesArray;
+}
+
+function startFilm() {
+  fetch(generateSearchURL())
+    .then((response) => response.json())
+    .then((data) => {
+      const films = data.response.docs;
+      const randomFilm = films[0];
+      runPlayer(randomFilm);
+    });
+}
 
 function runPlayer(randomFilm) {
   const identifier = randomFilm.identifier;
@@ -28,81 +77,36 @@ function runPlayer(randomFilm) {
     .then((response) => response.json())
     .then((data) => {
       const result = data.result;
-      let fileh264 = "";
-      let fileMPEG4 = "";
-      let fileQuickTime = "";
-      let fileOgg = "";
-
-      for (let i = 0; i < result.length; i++) {
-        let fileName = result[i].name;
-        switch (result[i].format) {
-          case "h.264":
-            fileh264 = fileName;
-            break;
-          case "MPEG4":
-            fileMPEG4 = fileName;
-            break;
-          case "QuickTime":
-            fileQuickTime = fileName;
-            break;
-          case "Ogg Video":
-            fileOgg = fileName;
-        }
-      }
-
-      // VIDEO JS
-      const videoSource = `https://archive.org/download/${identifier}/${
-        fileh264 || fileMPEG4 || fileQuickTime || fileOgg
-      }`;
-      const playerOptions = {
-        controls: true,
-        autoplay: "any",
-        preload: "auto",
-        aspectRatio: "16:9",
-        language: "en",
-        userActions: {
-          hotkeys: true,
-        },
-      };
-      const player = videojs(
-        document.querySelector(".video-js"),
-        playerOptions,
-        function () {
-          this.addClass("add-opacity");
-          document
-            .getElementsByClassName("reload-btn")[0]
-            .classList.add("add-opacity");
-        }
-      );
-      player.src(videoSource);
-
-      // Trigger Reload on Error
-      player.on("error", () => {
-        window.location.reload();
-      });
+      const sources = generateSourceList(identifier, result);
+      console.log(sources);
+      displayPlayer(sources);
     });
 }
 
-function startFilm() {
-  fetch(generateSearchURL())
-    .then((response) => response.json())
-    .then((data) => {
-      const films = data.response.docs;
-      const randomFilm = getRandomFilm(films);
-      const filmDate = new Date(randomFilm.date).getFullYear() || "undefined";
-      const title = randomFilm.title;
+function displayPlayer(sources) {
+  const player = videojs(
+    document.querySelector(".video-js"),
+    playerOptions,
+    function () {
+      removeLoadingPlaceholder();
+      player.addClass("add-opacity");
+      document.querySelector(".btn-reload").classList.add("add-opacity");
+    }
+  );
 
-      document.getElementById(
-        "title"
-      ).innerHTML = `title: <strong>${title}</strong>`;
-      document.getElementById(
-        "year"
-      ).innerHTML = `year: <strong>${filmDate}</strong>`;
+  let playlist = generatePlaylist(sources);
+  player.playlist(playlist);
 
-      document.getElementById("loading").remove();
+  // Trigger Reload on Error
+  player.on("error", () => {
+    window.location.reload();
+  });
+}
 
-      runPlayer(randomFilm);
-    });
+function generatePlaylist(sources) {
+  const playlist = [];
+  playlist.push({ sources: sources });
+  return playlist;
 }
 
 startFilm();
