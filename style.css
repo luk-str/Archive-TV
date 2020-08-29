@@ -9,19 +9,14 @@ body {
 
 .player-container {
   width: 80vw;
-  height: 60vw;
-  max-height: 60vh;
-  margin: 50px auto;
+  max-width: 1080px;
+  height: auto;
+  margin: 50px auto 50px auto;
 }
 
 .player-title {
   padding: 40px 0;
   line-height: 1.5em;
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
 }
 
 #loading {
@@ -31,20 +26,29 @@ iframe {
 }
 
 .btn {
-  border: none;
-  padding: 1em 2em;
   display: block;
-  margin: 180px auto;
+  padding: 0.8em 1.1em;
+  margin: 0 auto;
+  border: none;
   font-family: "Recursive", sans-serif;
   font-size: 20px;
   cursor: pointer;
   background-color: #eee;
   border-radius: 90px;
   color: #00c;
-  transition-duration: 0.1s;
+  transition-duration: 0.2s;
+  opacity: 0;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  transition-duration: 0.1s;
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
+.video-js {
+  opacity: 0;
+}
+
+.add-opacity {
+  opacity: 1;
 }

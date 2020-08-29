@@ -7,13 +7,15 @@
 
     <link rel="stylesheet" href="style.css" />
 
-    <!-- PLYR -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
-    <script src="https://cdn.plyr.io/3.6.2/plyr.js" defer></script>
-
     <!-- VIDEO JS -->
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.8.4/video.js" defer></script>
+
+    <!-- Add City Theme -->
+    <link
+      href="https://unpkg.com/@videojs/themes@1/dist/city/index.css"
+      rel="stylesheet"
+    />
 
     <script src="main.js" defer></script>
   </head>
@@ -30,11 +32,11 @@
         </div>
         <div id="loading">Loading...</div>
         <!-- <video id="player"></video> -->
-        <video-js class="video-js"></video-js>
+        <video-js class="video-js vjs-theme-city"></video-js>
       </article>
 
       <button onClick="window.location.reload()" class="btn reload-btn">
-        reload
+        ↻
       </button>
     </main>
     <footer></footer>

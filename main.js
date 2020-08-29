@@ -50,25 +50,6 @@ function runPlayer(randomFilm) {
         }
       }
 
-      // PLYR
-      // const playerSource = {
-      //   type: "video",
-      //   sources: [
-      //     {
-      //       src: `https://archive.org/download/${identifier}/${
-      //         fileh264 || fileMPEG4 || fileQuickTime
-      //       }`,
-      //       type: "video/mp4",
-      //     },
-      //     {
-      //       src: `https://archive.org/download/${identifier}/${fileOgg}`,
-      //       type: "video/ogg",
-      //     },
-      //   ],
-      // };
-      // const player = new Plyr("#player", playerOptions);
-      // player.source = playerSource;
-
       // VIDEO JS
       const videoSource = `https://archive.org/download/${identifier}/${
         fileh264 || fileMPEG4 || fileQuickTime || fileOgg
@@ -79,14 +60,26 @@ function runPlayer(randomFilm) {
         preload: "auto",
         aspectRatio: "16:9",
         language: "en",
+        userActions: {
+          hotkeys: true,
+        },
       };
       const player = videojs(
         document.querySelector(".video-js"),
-        playerOptions
+        playerOptions,
+        function () {
+          this.addClass("add-opacity");
+          document
+            .getElementsByClassName("reload-btn")[0]
+            .classList.add("add-opacity");
+        }
       );
       player.src(videoSource);
 
-      console.log(videoSource);
+      // Trigger Reload on Error
+      player.on("error", () => {
+        window.location.reload();
+      });
     });
 }
 
