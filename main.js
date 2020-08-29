@@ -50,23 +50,43 @@ function runPlayer(randomFilm) {
         }
       }
 
-      const playerSource = {
-        type: "video",
-        sources: [
-          {
-            src: `https://archive.org/download/${identifier}/${
-              fileh264 || fileMPEG4 || fileQuickTime
-            }`,
-            type: "video/mp4",
-          },
-          {
-            src: `https://archive.org/download/${identifier}/${fileOgg}`,
-            type: "video/ogg",
-          },
-        ],
+      // PLYR
+      // const playerSource = {
+      //   type: "video",
+      //   sources: [
+      //     {
+      //       src: `https://archive.org/download/${identifier}/${
+      //         fileh264 || fileMPEG4 || fileQuickTime
+      //       }`,
+      //       type: "video/mp4",
+      //     },
+      //     {
+      //       src: `https://archive.org/download/${identifier}/${fileOgg}`,
+      //       type: "video/ogg",
+      //     },
+      //   ],
+      // };
+      // const player = new Plyr("#player", playerOptions);
+      // player.source = playerSource;
+
+      // VIDEO JS
+      const videoSource = `https://archive.org/download/${identifier}/${
+        fileh264 || fileMPEG4 || fileQuickTime || fileOgg
+      }`;
+      const playerOptions = {
+        controls: true,
+        autoplay: "any",
+        preload: "auto",
+        aspectRatio: "16:9",
+        language: "en",
       };
-      const player = new Plyr("#player", playerOptions);
-      player.source = playerSource;
+      const player = videojs(
+        document.querySelector(".video-js"),
+        playerOptions
+      );
+      player.src(videoSource);
+
+      console.log(videoSource);
     });
 }
 

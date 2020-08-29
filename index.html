@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Internet Archive TV</title>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
+
     <link rel="stylesheet" href="style.css" />
+
+    <!-- PLYR -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
     <script src="https://cdn.plyr.io/3.6.2/plyr.js" defer></script>
+
+    <!-- VIDEO JS -->
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.8.4/video.js" defer></script>
+
     <script src="main.js" defer></script>
   </head>
 
@@ -21,8 +29,10 @@
           <span id="year"></span>
         </div>
         <div id="loading">Loading...</div>
-        <video id="player"></video>
+        <!-- <video id="player"></video> -->
+        <video-js class="video-js"></video-js>
       </article>
+
       <button onClick="window.location.reload()" class="btn reload-btn">
         reload
       </button>
