@@ -7,12 +7,6 @@ body {
   color: #eee;
 }
 
-/* .site-title {
-  text-align: center;
-  margin: 30px 0 0 0;
-  font-size: 24px;
-} */
-
 .player-container {
   width: 80vw;
   height: 60vw;
@@ -30,14 +24,10 @@ iframe {
   height: 100%;
 }
 
-#player {
-  border: none;
-}
-
 #loading {
   text-align: center;
   font-size: 40px;
-  margin: 200px 0;
+  margin: 200px 0 0 0;
 }
 
 .btn {

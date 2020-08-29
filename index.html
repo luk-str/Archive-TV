@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Internet Archive TV</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.plyr.io/3.6.2/plyr.js" defer></script>
     <script src="main.js" defer></script>
   </head>
 
@@ -18,15 +20,8 @@
           <br />
           <span id="year"></span>
         </div>
-        <div id="loading">
-          Loading...
-        </div>
-        <iframe
-          id="player"
-          webkitallowfullscreen="true"
-          mozallowfullscreen="true"
-          allowfullscreen
-        ></iframe>
+        <div id="loading">Loading...</div>
+        <video id="player"></video>
       </article>
       <button onClick="window.location.reload()" class="btn reload-btn">
         reload
