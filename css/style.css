@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&display=swap");
-
 body {
   box-sizing: border-box;
-  background-color: rgba(40, 20, 200, 1);
-  font-family: "Recursive", sans-serif;
+  /* background-color: rgba(40, 20, 200, 1); */
+  background-color: #000;
   color: #eee;
 }
 
