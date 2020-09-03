@@ -1,4 +1,7 @@
 const reloadButton = document.getElementById("reloadButton");
+const titleField = document.getElementById("title");
+const yearField = document.getElementById("year");
+const descriptionField = document.getElementById("description");
 
 // Search Options
 const searchPagesRange = 1000;
@@ -8,7 +11,11 @@ const randomPageNumber = () => {
   return Math.floor(Math.random() * searchPagesRange);
 };
 
-const searchUrl = `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(moviesandfilms)+AND+mediatype:(movies)&fl[]=identifier&fl[]=title&fl[]date&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
+// const searchUrl = `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(moviesandfilms)+AND+mediatype:(movies)&fl[]=identifier&fl[]=title&fl[]date&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
+
+const searchUrl = `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(moviesandfilms)+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
+
+console.log(searchUrl);
 
 // Player Options
 const playerOptions = {
@@ -48,6 +55,7 @@ player.on("ended", () => {
 
 reloadButton.onclick = loadVideo;
 
+// Load Video
 async function loadVideo() {
   const response = await fetch(searchUrl);
   const data = await response.json();
@@ -55,7 +63,18 @@ async function loadVideo() {
 
   let sourceList = await makeSourceList(films[0]);
 
+  fillMetaData(films[0]);
   player.src(sourceList);
+}
+
+function fillMetaData(film) {
+  const title = film.title;
+  const year = film.year;
+  const description = film.description;
+
+  titleField.textContent = title;
+  yearField.textContent = year || "not defined";
+  descriptionField.textContent = description || "no description";
 }
 
 async function makeSourceList(film) {
