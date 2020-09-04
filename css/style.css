@@ -76,3 +76,12 @@ h6 {
   border: none;
   border-radius: 90px;
 }
+
+.metadata__header {
+  display: inline;
+  color: pink;
+}
+
+.metadata {
+  line-height: 1.5em;
+}
