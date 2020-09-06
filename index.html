@@ -15,27 +15,36 @@
 
   <body>
     <header></header>
-    <nav></nav>
+    <nav>
+      <button id="reloadButton" class="btn btn-reload">↻</button>
+    </nav>
     <main>
       <article class="player-container">
         <div id="loading">Loading...</div>
         <video-js class="video-js vjs-theme-city vjs-matrix"></video-js>
       </article>
 
-      <button id="reloadButton" class="btn btn-reload">↻</button>
-      <h2>Now playing:</h2>
-      <div>
-        <h3 class="metadata metadata__header">title:</h3>
-        <span id="title" class="metadata metadata__text"></span>
-      </div>
-      <div>
-        <h3 class="metadata metadata__header">year:</h3>
-        <span id="year" class="metadata metadata__text"></span>
-      </div>
-      <div>
-        <h3 class="metadata metadata__header">description:</h3>
-        <span id="description" class="metadata metadata__text"></span>
-      </div>
+      <article class="metadata">
+        <h2>Now playing</h2>
+        <section>
+          <h3 class="metadata__header">title:</h3>
+          <span id="title" class="metadata__text"></span>
+        </section>
+        <section>
+          <h3 class="metadata__header">year:</h3>
+          <span id="year" class="metadata__text"></span>
+        </section>
+        <section>
+          <h3 class="metadata__header">description:</h3>
+          <span id="description" class="metadata__text"></span>
+        </section>
+        <section>
+          <h3 class="metadata__header">link:</h3>
+          <span
+            ><a href="" target="blank" id="link" class="metadata__text"></a
+          ></span>
+        </section>
+      </article>
     </main>
     <footer></footer>
   </body>

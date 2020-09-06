@@ -72,9 +72,9 @@ function fillMetaData(film) {
   const year = film.year;
   const description = film.description;
 
-  titleField.textContent = title;
-  yearField.textContent = year || "not defined";
-  descriptionField.textContent = description || "no description";
+  titleField.textContent = `" ${title} "`;
+  yearField.textContent = year;
+  descriptionField.textContent = description;
 }
 
 async function makeSourceList(film) {
