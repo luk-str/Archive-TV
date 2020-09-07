@@ -10,7 +10,7 @@
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 
     <script src="script/main.js" defer></script>
-    <link rel="stylesheet" href="css/style.css" />
+    <link href="css/style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -27,21 +27,20 @@
       <article class="metadata">
         <h2>Now playing</h2>
         <section>
-          <h3 class="metadata__header">title:</h3>
-          <span id="title" class="metadata__text"></span>
+          <h3 class="metadata__header" id="titleHeader">title:</h3>
+          <span id="titleText" class="metadata__text"></span>
         </section>
+        <section id="yearMetadata"></section>
+        <section id="descriptionMetadata"></section>
         <section>
-          <h3 class="metadata__header">year:</h3>
-          <span id="year" class="metadata__text"></span>
-        </section>
-        <section>
-          <h3 class="metadata__header">description:</h3>
-          <span id="description" class="metadata__text"></span>
-        </section>
-        <section>
-          <h3 class="metadata__header">link:</h3>
+          <h3 class="metadata__header" id="sourceHeader">source:</h3>
           <span
-            ><a href="" target="blank" id="link" class="metadata__text"></a
+            ><a
+              href=""
+              target="blank"
+              id="sourceText"
+              class="metadata__text"
+            ></a
           ></span>
         </section>
       </article>

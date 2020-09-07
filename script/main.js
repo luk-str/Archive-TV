@@ -1,7 +1,13 @@
 const reloadButton = document.getElementById("reloadButton");
-const titleField = document.getElementById("title");
-const yearField = document.getElementById("year");
-const descriptionField = document.getElementById("description");
+const titleHeader = document.getElementById("titleHeader");
+const titleText = document.getElementById("titleText");
+const yearHeader = document.getElementById("yearHeader");
+const yearText = document.getElementById("yearText");
+const descriptionHeader = document.getElementById("descriptionHeader");
+const desriptionText = document.getElementById("descriptionText");
+const sourceText = document.getElementById("sourceText");
+const yearMetadata = document.getElementById("yearMetadata");
+const descriptionMetadata = document.getElementById("descriptionMetadata");
 
 // Search Options
 const searchPagesRange = 1000;
@@ -57,6 +63,7 @@ reloadButton.onclick = loadVideo;
 
 // Load Video
 async function loadVideo() {
+  player.pause();
   const response = await fetch(searchUrl);
   const data = await response.json();
   const films = data.response.docs;
@@ -71,10 +78,21 @@ function fillMetaData(film) {
   const title = film.title;
   const year = film.year;
   const description = film.description;
+  const id = film.identifier;
+  const sourceUrl = `https://archive.org/details/${id}`;
 
-  titleField.textContent = `" ${title} "`;
-  yearField.textContent = year;
-  descriptionField.textContent = description;
+  titleText.textContent = title;
+  sourceText.setAttribute("href", sourceUrl);
+  sourceText.textContent = sourceUrl;
+
+  if (year !== undefined) {
+    yearMetadata.innerHTML = `<h3 class="metadata__header" id="yearHeader">year:</h3>
+    <span id="yearText" class="metadata__text">${year}</span>`;
+  }
+  if (description !== undefined) {
+    descriptionMetadata.innerHTML = `<h3 class="metadata__header" id="descriptionHeader">description:</h3>
+    <span id="descriptionText" class="metadata__text">${description}</span>`;
+  }
 }
 
 async function makeSourceList(film) {
