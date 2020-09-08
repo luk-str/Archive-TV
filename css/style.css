@@ -46,7 +46,32 @@ a:hover {
   opacity: 0;
 }
 
+.channelsContainer {
+  display: block;
+  width: 84vw;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
 .btn {
+  margin: 50px 10px 0px 10px;
+  border: 1px solid rgb(255, 192, 203);
+  padding: 2em 1em;
+  background: none;
+  color: rgb(255, 192, 203);
+  font-size: 16px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  color: #ddd;
+  border-color: #ddd;
+  transition-duration: 0.1s;
+}
+
+.btn-reload {
   display: block;
   margin: 50px auto 0px auto;
   border: none;
@@ -55,16 +80,13 @@ a:hover {
   font-size: 40px;
   cursor: pointer;
   transition-duration: 0.2s;
-}
-
-.btn-reload {
   opacity: 0;
 }
 
-.btn:hover {
+.btn-reload:hover {
   transform: scale(1.5);
   color: #fff;
-  transition-duration: 0.4s;
+  transition-duration: 0.2s;
 }
 
 .add-opacity {

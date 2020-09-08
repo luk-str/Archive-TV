@@ -16,7 +16,13 @@
   <body>
     <header></header>
     <nav>
-      <button id="reloadButton" class="btn btn-reload">↻</button>
+      <section class="channelsContainer">
+      <button id="featureFilmsButton" class="btn">Feature Films</button>
+      <button id="newsButton" class="btn">News & Public Affairs</button>
+      <button id="sciFiButton" class="btn">Sci-Fi / Horror</button>
+      <button id="tvButton" class="btn">TV Archive</button>
+    </section>
+      <button id="reloadButton" class="btn-reload">↻</button>
     </nav>
     <main>
       <article class="player-container">
@@ -26,6 +32,10 @@
 
       <article class="metadata">
         <h2>Now playing</h2>
+        <section>
+          <h3 class="metadata__header" id="collectionHeader">collection:</h3>
+          <span id=collectionText class="metadata__text"></span>
+        </section>
         <section>
           <h3 class="metadata__header" id="titleHeader">title:</h3>
           <span id="titleText" class="metadata__text"></span>
