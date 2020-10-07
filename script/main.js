@@ -1,8 +1,4 @@
 const reloadButton = document.getElementById("reloadButton");
-const featureFilmsButton = document.getElementById("featureFilmsButton");
-const newsButton = document.getElementById("newsButton");
-const sciFiButton = document.getElementById("sciFiButton");
-const tvButton = document.getElementById("tvButton");
 
 const titleText = document.getElementById("titleText");
 const sourceText = document.getElementById("sourceText");
@@ -30,7 +26,6 @@ const getSearchUrl = (collectionName) => {
 // Player Options
 const playerOptions = {
   controls: true,
-  autoplay: "any",
   preload: "auto",
   aspectRatio: "16:9",
   language: "en",
