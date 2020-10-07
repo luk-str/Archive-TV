@@ -36,8 +36,6 @@ const playerOptions = {
 
 function onPlayerLoaded() {
   document.getElementById("loading").remove();
-  player.addClass("add-opacity");
-  document.querySelector(".btn-reload").classList.add("add-opacity");
   loadVideo(collectionName);
 }
 
@@ -60,30 +58,6 @@ player.on("ended", () => {
 
 // Handle Button Clicks
 reloadButton.onclick = () => {
-  loadVideo(collectionName);
-};
-
-featureFilmsButton.onclick = () => {
-  collectionName = "feature_films";
-  searchPagesRange = 100;
-  loadVideo(collectionName);
-};
-
-newsButton.onclick = () => {
-  collectionName = "newsandpublicaffairs";
-  searchPagesRange = 1000;
-  loadVideo(collectionName);
-};
-
-sciFiButton.onclick = () => {
-  collectionName = "SciFi_Horror";
-  searchPagesRange = 45;
-  loadVideo(collectionName);
-};
-
-tvButton.onclick = () => {
-  collectionName = "television";
-  searchPagesRange = 1000;
   loadVideo(collectionName);
 };
 
@@ -115,17 +89,6 @@ function fillMetaData(film) {
     case "moviesandfilms":
       collectionText.textContent = "Movies and Films";
       break;
-    case "feature_films":
-      collectionText.textContent = "Feature Films";
-      break;
-    case "newsandpublicaffairs":
-      collectionText.textContent = "News & Public Affairs";
-      break;
-    case "SciFi_Horror":
-      collectionText.textContent = "Sci-Fi / Horror";
-      break;
-    case "television":
-      collectionText.textContent = "TV Archive";
   }
 
   titleText.textContent = title;

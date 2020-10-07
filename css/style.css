@@ -1,9 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Source+Sans+Pro&display=swap");
 
+:root {
+  --text-color: #333;
+  --link-color: #a3f;
+  --link-color_hover: #33f;
+  --accent-color: #33f;
+}
+
 body {
   box-sizing: border-box;
-  background-color: #111;
-  color: #ddd;
+  background-color: #fff;
+  color: var(--text-color);
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -14,15 +21,6 @@ h4,
 h5,
 h6 {
   font-family: "Lato", sans-serif;
-}
-
-a {
-  color: #999;
-  font-style: italic;
-}
-
-a:hover {
-  color: rgba(100, 100, 250);
 }
 
 #loading {
@@ -42,23 +40,16 @@ a:hover {
   margin: 80px auto 40px auto;
 }
 
-.video-js {
+/* .video-js {
   opacity: 0;
-}
-
-.channelsContainer {
-  display: block;
-  width: 84vw;
-  max-width: 1080px;
-  margin: 0 auto;
-}
+} */
 
 .btn {
   margin: 50px 10px 0px 10px;
-  border: 1px solid rgb(255, 192, 203);
+  border: 1px solid var(--accent-color);
   padding: 2em 1em;
   background: none;
-  color: rgb(255, 192, 203);
+  color: var(--accent-color);
   font-size: 16px;
   cursor: pointer;
   transition-duration: 0.3s;
@@ -66,8 +57,8 @@ a:hover {
 
 .btn:hover {
   transform: scale(1.05);
-  color: #ddd;
-  border-color: #ddd;
+  color: #00f;
+  border-color: #00f;
   transition-duration: 0.1s;
 }
 
@@ -76,25 +67,19 @@ a:hover {
   margin: 50px auto 0px auto;
   border: none;
   background: none;
-  color: rgb(255, 192, 203);
+  color: var(--accent-color);
   font-size: 40px;
   cursor: pointer;
   transition-duration: 0.2s;
-  opacity: 0;
 }
 
 .btn-reload:hover {
   transform: scale(1.5);
-  color: #fff;
   transition-duration: 0.2s;
 }
 
-.add-opacity {
-  opacity: 1;
-}
-
 .vjs-matrix .vjs-play-progress {
-  background-color: rgb(80, 255, 80);
+  background-color: var(--accent-color);
 }
 
 .vjs-matrix .vjs-big-play-button {
@@ -111,7 +96,7 @@ a:hover {
   display: inline;
   padding-right: 0.3em;
   font-size: 16px;
-  color: rgb(255, 192, 203);
+  color: var(--accent-color);
 }
 
 .metadata {
@@ -119,6 +104,6 @@ a:hover {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1em 1em;
-  border: 1px solid #888;
+  border: 1px solid #333;
   line-height: 1.5em;
 }
