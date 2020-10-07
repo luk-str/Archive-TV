@@ -18,7 +18,6 @@ const randomPageNumber = () => {
 const getSearchUrl = () => {
   const searchUrl = `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(${collectionName})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
 
-  console.log(searchUrl);
   return searchUrl;
 };
 
@@ -34,7 +33,6 @@ const playerOptions = {
 };
 
 function onPlayerLoaded() {
-  document.getElementById("loading").remove();
   loadVideo();
 }
 
@@ -66,7 +64,6 @@ async function loadVideo() {
   const response = await fetch(getSearchUrl());
   const data = await response.json();
   const filmMetadata = data.response.docs[0];
-  console.log(filmMetadata);
   const filmId = filmMetadata.identifier;
 
   const fileList = await getFileList(filmId);
@@ -78,7 +75,7 @@ async function loadVideo() {
 
 function fillMetaData(film) {
   const title = film.title;
-  const year = film.year;
+  const {year} = film.year;
   const description = film.description;
   const id = film.identifier;
   const sourceUrl = `https://archive.org/details/${id}`;

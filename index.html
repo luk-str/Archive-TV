@@ -20,18 +20,13 @@
     </nav>
     <main>
       <article class="player-container">
-        <div id="loading">Loading...</div>
+        <section id="titleText" class="title"></section>
         <video-js class="video-js vjs-matrix"></video-js>
       </article>
 
       <article class="metadata">
-        <h2>Now playing</h2>
-        <section>
-          <h3 class="metadata__header" id="titleHeader">title:</h3>
-          <span id="titleText" class="metadata__text"></span>
-        </section>
-        <section id="yearMetadata"></section>
         <section id="descriptionMetadata"></section>
+        <section id="yearMetadata"></section>
         <section>
           <h3 class="metadata__header" id="sourceHeader">source:</h3>
           <span
@@ -45,6 +40,8 @@
         </section>
       </article>
     </main>
-    <footer></footer>
+    <footer>
+      <article class="footer__content">Powered by Internet Archive</article>
+    </footer>
   </body>
 </html>
