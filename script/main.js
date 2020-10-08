@@ -75,7 +75,7 @@ async function loadVideo() {
 
 function fillMetaData(film) {
   const title = film.title;
-  const {year} = film.year;
+  const {year} = film.year || "";
   const description = film.description;
   const id = film.identifier;
   const sourceUrl = `https://archive.org/details/${id}`;

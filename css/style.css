@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Source+Sans+Pro&display=swap");
+@font-face {
+  font-family: "Lack-regular";
+  src: url("/fonts/Lack/Lack-Regular.woff2") format("woff2"),
+    url("/fonts/Lack/Lack-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Karrik-regular";
+  src: url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2"),
+    url("/fonts/Karrik/Karrik-Regular.woff") format("woff"),
+    url("/fonts/Karrik/Karrik-Regular.ttf") format("truetype");
+}
 
 :root {
   --text-color: #333;
@@ -13,7 +24,13 @@ body {
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Lack-regular", erif;
+}
+
+main {
+  width: 80vw;
+  max-width: 1080px;
+  margin: 0 auto 10rem;
 }
 
 h1,
@@ -22,20 +39,24 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lato", sans-serif;
+  font-family: "Karrik-regular", sans-serif;
+}
+
+a {
+  color: var(--text-color);
 }
 
 .title {
-  font-family: "Lato", sans-serif;
-  font-size: x-large;
+  font-family: "Karrik-regular", sans-serif;
+  font-size: 2rem;
+  margin: 0;
   padding: 0 0 0.5em 0;
 }
 
 .player-container {
-  width: 84vw;
-  max-width: 1080px;
+  width: 100%;
   height: auto;
-  margin: 80px auto 40px auto;
+  margin: 3rem auto 3rem auto;
 }
 
 .btn-reload {
@@ -69,35 +90,43 @@ h6 {
 }
 
 .metadata__header {
-  display: inline;
-  padding-right: 0.3em;
-  font-size: 16px;
+  margin: 0.5em 0;
+  font-size: 1.3rem;
   color: var(--accent-color);
 }
 
 .metadata {
-  width: 80vw;
-  max-width: 800px;
-  margin: 0 auto;
   padding: 1em;
   border: 1px solid var(--accent-color);
-  line-height: 1.5em;
+  font-size: 0.8rem;
 }
 
 footer {
   background: var(--accent-color);
   color: var(--background-color);
-  height: 4em;
+  height: 4rem;
   width: 100%;
-
   position: fixed;
   bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
 .footer__content {
+  font-size: 0.8rem;
   width: 80vw;
   max-width: 800px;
   margin: 0 auto;
-  padding: 1em;
   text-align: center;
+}
+
+.link__archive {
+  color: var(--background-color);
+}
+
+.title__header {
+  display: inline-block;
+  width: 4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }

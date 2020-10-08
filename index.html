@@ -20,7 +20,8 @@
     </nav>
     <main>
       <article class="player-container">
-        <section id="titleText" class="title"></section>
+        <span class="metadata__header title__header"><h3>Now playing:</h3></span>
+        <span id="titleText" class="title"></span>
         <video-js class="video-js vjs-matrix"></video-js>
       </article>
 
@@ -29,19 +30,24 @@
         <section id="yearMetadata"></section>
         <section>
           <h3 class="metadata__header" id="sourceHeader">source:</h3>
-          <span
-            ><a
+          <span>
+            <a
               href=""
               target="blank"
               id="sourceText"
               class="metadata__text"
-            ></a
-          ></span>
+            ></a>
+          </span>
         </section>
       </article>
     </main>
     <footer>
-      <article class="footer__content">Powered by Internet Archive</article>
+      <article class="footer__content">
+        Powered by
+        <a href="https://archive.org" target="blank" class="link__archive">
+          Internet Archive
+        </a>
+      </article>
     </footer>
   </body>
 </html>
