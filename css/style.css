@@ -104,6 +104,12 @@ a {
   font-size: 0.8rem;
 }
 
+.metadata__source {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 footer {
   background: var(--accent-color);
   color: var(--background-color);

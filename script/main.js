@@ -69,10 +69,6 @@ async function loadVideo() {
   const fileList = await getFileList(filmId);
   const sourceList = await getSourceList(fileList, filmId);
 
-  console.log(filmMetadata);
-  console.log(fileList);
-  console.log(sourceList[0]);
-  
   fillMetaData(filmMetadata);
   player.src(sourceList);
 }
