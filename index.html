@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+
     <title>Internet Archive TV</title>
 
-    <!-- VIDEO JS -->
     <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 
@@ -20,7 +38,9 @@
     </nav>
     <main>
       <article class="player-container">
-        <span class="metadata__header title__header"><h3>Now playing:</h3></span>
+        <span class="metadata__header title__header"
+          ><h3>Now playing:</h3></span
+        >
         <span id="titleText" class="title"></span>
         <video-js class="video-js vjs-matrix"></video-js>
       </article>

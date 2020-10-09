@@ -1,20 +1,23 @@
 @font-face {
   font-family: "Lack-regular";
-  src: url("/fonts/Lack/Lack-Regular.woff2") format("woff2"),
+  font-style: normal;
+  font-display: swap;
+  src: local("Lack-regular"),
+    url("/fonts/Lack/Lack-Regular.woff2") format("woff2"),
     url("/fonts/Lack/Lack-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Karrik-regular";
-  src: url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2"),
-    url("/fonts/Karrik/Karrik-Regular.woff") format("woff"),
-    url("/fonts/Karrik/Karrik-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+  src: local("Karrik-regular"),
+    url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2"),
+    url("/fonts/Karrik/Karrik-Regular.woff") format("woff");
 }
 
 :root {
   --text-color: #333;
-  --link-color: #a3f;
-  --link-color_hover: #33f;
   --accent-color: #33f;
   --background-color: #eee;
 }
@@ -39,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Karrik-regular", sans-serif;
+  font-family: "Karrik-regular", serif;
 }
 
 a {
@@ -47,7 +50,7 @@ a {
 }
 
 .title {
-  font-family: "Karrik-regular", sans-serif;
+  font-family: "Karrik-regular", serif;
   font-size: 2rem;
   margin: 0;
   padding: 0 0 0.5em 0;
