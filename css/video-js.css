@@ -1,0 +1,28 @@
+.video-js {
+  font-size: 14px;
+}
+
+.video-js .vjs-big-play-button {
+  font-size: 5em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+}
+
+.video-js:hover .vjs-big-play-button,
+.video-js .vjs-big-play-button:focus {
+  background: none;
+  font-size: 6.5em;
+  transition: 0.3s;
+}
+
+.video-js .vjs-control-bar {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 14%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
