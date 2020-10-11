@@ -53,7 +53,7 @@ a {
   font-family: "Karrik-regular", serif;
   font-size: 2rem;
   margin: 0;
-  padding: 0 0 0.5em 0;
+  padding: 0;
 }
 
 .player-container {
@@ -124,4 +124,12 @@ footer {
   width: 4rem;
   font-size: 0.7rem;
   text-transform: uppercase;
+}
+
+.metadata__header.title__header {
+  margin: -1em 0;
+}
+
+.title__container {
+  margin-bottom: 1em;
 }

@@ -119,5 +119,10 @@ async function getSourceList(fileList, filmId) {
     }
   });
 
-  return sourcesArray;
+  if (sourcesArray.length === 0) {
+    loadVideo();
+    console.log("No playable files found. Loading new video...");
+  } else {
+    return sourcesArray;
+  }
 }
