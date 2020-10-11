@@ -36,33 +36,22 @@ main {
   margin: 0 auto 10rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Karrik-regular", serif;
-}
-
 a {
   color: var(--text-color);
-}
-
-.title {
-  font-family: "Karrik-regular", serif;
-  font-size: 2rem;
-  margin: 0;
-  padding: 0;
 }
 
 .player-container {
   width: 100%;
   height: auto;
-  margin: 3rem auto 3rem auto;
+  margin: 0 auto 3rem auto;
+  display: flex;
 }
 
-.btn-reload {
+.navigation {
+  display: flex;
+}
+
+.button-nav {
   display: block;
   margin: 50px auto 0px auto;
   border: none;
@@ -73,7 +62,7 @@ a {
   transition-duration: 0.2s;
 }
 
-.btn-reload:hover {
+.button-nav:hover {
   transform: scale(1.5);
   transition-duration: 0.2s;
 }
@@ -82,6 +71,7 @@ a {
   margin: 0.5em 0;
   font-size: 1.3rem;
   color: var(--accent-color);
+  font-family: "Karrik-regular", serif;
 }
 
 .metadata {
@@ -122,14 +112,18 @@ footer {
 .title__header {
   display: inline-block;
   width: 4rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-}
-
-.metadata__header.title__header {
-  margin: -1em 0;
+  font-weight: 900;
 }
 
 .title__container {
-  margin-bottom: 1em;
+  margin: 3rem 0 1em 0;
+}
+
+.title {
+  font-family: "Karrik-regular", serif;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
 }

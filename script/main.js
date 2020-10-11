@@ -1,9 +1,14 @@
 const reloadButton = document.getElementById("reloadButton");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
 
 const titleText = document.getElementById("titleText");
 const sourceText = document.getElementById("sourceText");
 const yearMetadata = document.getElementById("yearMetadata");
 const descriptionMetadata = document.getElementById("descriptionMetadata");
+
+let playlist = [];
+let playlistPosition = 0;
 
 // Search Options
 let searchPagesRange = 1000;
