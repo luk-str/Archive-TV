@@ -3,26 +3,80 @@
 }
 
 .video-js .vjs-big-play-button {
-  font-size: 5em;
+  font-size: 3em;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: none;
+  background: #0005;
   border: none;
+  border-radius: 0%;
+  height: 1.5em;
+  width: 2.5em;
 }
 
 .video-js:hover .vjs-big-play-button,
 .video-js .vjs-big-play-button:focus {
-  background: none;
-  font-size: 6.5em;
+  background: #0005;
+  font-size: 4em;
   transition: 0.3s;
 }
 
 .video-js .vjs-control-bar {
-  background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.9) 14%,
+    rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+.video-js .vjs-load-progress {
+  background-color: #aaa;
+}
+
+.video-js .vjs-load-progress div {
+  background-color: #aaa;
+}
+
+.video-js .vjs-slider {
+  background-color: #111;
+}
+
+.vjs-loading-spinner {
+  border: 6px solid rgba(50, 50, 50, 0.7);
+}
+
+@keyframes vjs-spinner-fade {
+  0% {
+    border-top-color: #888;
+  }
+  20% {
+    border-top-color: #888;
+  }
+  35% {
+    border-top-color: #fff;
+  }
+  60% {
+    border-top-color: #888;
+  }
+  100% {
+    border-top-color: #888;
+  }
+}
+
+@-webkit-keyframes vjs-spinner-fade {
+  0% {
+    border-top-color: #888;
+  }
+  20% {
+    border-top-color: #888;
+  }
+  35% {
+    border-top-color: #fff;
+  }
+  60% {
+    border-top-color: #888;
+  }
+  100% {
+    border-top-color: #888;
+  }
 }
