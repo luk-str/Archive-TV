@@ -76,12 +76,13 @@ a {
   color: var(--accent-color);
   font-size: 40px;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition-duration: 0.5s;
+  transform: rotate(-45deg);
 }
 
 .btn-reload:hover {
-  transform: scale(1.5);
-  transition-duration: 0.2s;
+  transform: rotate(45deg);
+  transition-duration: 0.3s;
 }
 
 .metadata__header {
