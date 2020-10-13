@@ -21,10 +21,16 @@
   --accent-color: #33f;
   --background-color: #eee;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   box-sizing: border-box;
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Lack-regular", sans-serif;
