@@ -60,12 +60,11 @@ a {
   color: var(--accent-color);
   font-size: 40px;
   cursor: pointer;
-  transition-duration: 0.5s;
-  transform: rotate(-45deg);
+  transition-duration: 1s;
 }
 
 .button-nav:hover {
-  transform: rotate(45deg);
+  transform: rotate(360deg);
   transition-duration: 0.3s;
 }
 

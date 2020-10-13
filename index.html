@@ -37,7 +37,14 @@
   <body>
     <header></header>
     <nav class="navigation">
-      <button id="reloadButton" class="button-nav">↻</button>
+      <button
+        id="reloadButton"
+        class="button-nav"
+        aria-label="Load new video"
+        title="Load new video"
+      >
+        ↻
+      </button>
     </nav>
     <main>
       <section class="title__container">
@@ -54,7 +61,12 @@
         <section class="metadata__source">
           <p class="metadata__header" id="sourceHeader">source:</p>
           <span>
-            <a href="" target="blank" id="sourceText"></a>
+            <a
+              href=""
+              target="blank"
+              id="sourceText"
+              title="Video source page on Internet Archive. Opens in new tab."
+            ></a>
           </span>
         </section>
       </article>
@@ -62,7 +74,7 @@
     <footer>
       <article class="footer__content">
         Powered by
-        <a href="https://archive.org" target="blank" class="link__archive">
+        <a href="https://archive.org" target="blank" class="link__archive" title="Internet Archive. Opens in new tab.">
           Internet Archive
         </a>
       </article>
