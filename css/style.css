@@ -25,6 +25,13 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+nav,
+main,
+footer {
+  visibility: hidden;
+  opacity: 0;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -34,6 +41,11 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Lack-regular", sans-serif;
+}
+
+button {
+  font-family: "Lack-regular", sans-serif;
+  font-size: 0.8rem;
 }
 
 main {
@@ -52,7 +64,7 @@ a {
   margin: 0 auto 3rem auto;
 }
 
-.button-nav {
+.button-reload {
   display: block;
   margin: 50px auto 0px auto;
   border: none;
@@ -63,7 +75,7 @@ a {
   transition-duration: 1s;
 }
 
-.button-nav:hover {
+.button-reload:hover {
   transform: rotate(360deg);
   transition-duration: 0.3s;
 }
@@ -73,6 +85,10 @@ a {
   font-size: 1.3rem;
   color: var(--accent-color);
   font-family: "Karrik-regular", serif;
+}
+
+.metadata__header .emoji {
+  font-size: 0.8em;
 }
 
 .metadata {
@@ -127,4 +143,94 @@ footer {
   font-size: 2rem;
   margin: 0;
   padding: 0;
+}
+
+.welcome__container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.welcome__box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  max-width: 500px;
+  transform: translate(-50%, -50%);
+  background: var(--background-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--accent-color);
+  font-size: 0.8rem;
+  background: #fff;
+}
+
+.welcome__box h1 {
+  margin: 0;
+}
+
+.welcome__box p {
+  margin: 1rem 0 2rem;
+}
+
+.button-ok {
+  padding: 0.6em 2em;
+  cursor: pointer;
+  border: 2px solid var(--accent-color);
+  background: none;
+  color: var(--accent-color);
+  transition: 0.3s;
+}
+
+.button-ok:hover,
+.button-ok:focus {
+  background: var(--accent-color);
+  color: #fff;
+  transform: scale(1.1);
+  transition: 0.06s;
+}
+
+.loading__container {
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.loading__text {
+  font-size: 1.5rem;
+  margin: 0rem;
+}
+
+.loading__symbol {
+  margin: 1rem;
+  font-size: 3rem;
+  animation: 1s loading-rotation infinite linear;
+}
+
+@keyframes loading-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s;
 }

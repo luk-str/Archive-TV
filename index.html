@@ -35,21 +35,45 @@
   </head>
 
   <body>
-    <header></header>
+    <article class="welcome__container" id="welcomeContainer">
+      <section class="welcome__box">
+        <h1>Hello</h1>
+        <p>
+          This website lets you watch random videos from the huge library of
+          Internet Archive. You never know what you're gonna get. Good luck
+          cowboy!
+        </p>
+        <button
+          class="button-ok"
+          id="okButton"
+          aria-label="Start watching"
+          title="Start watching"
+        >
+          Let's go!
+        </button>
+      </section>
+    </article>
+
+    <article class="loading__container">
+      <p class="loading__symbol">↻</p>
+      <p class="loading__text">Loading...</p>
+    </article>
+
     <nav class="navigation">
       <button
         id="reloadButton"
-        class="button-nav"
+        class="button-reload"
         aria-label="Load new video"
         title="Load new video"
       >
         ↻
       </button>
     </nav>
+
     <main>
       <section class="title__container">
         <span class="metadata__header title__header">Now playing:</span>
-        <span id="titleText" class="title"></span>
+        <span id="titleText" class="title" aria-label="Video title"></span>
       </section>
       <article class="player-container">
         <video-js class="video-js vjs-matrix"></video-js>
@@ -74,7 +98,12 @@
     <footer>
       <article class="footer__content">
         Powered by
-        <a href="https://archive.org" target="blank" class="link__archive" title="Internet Archive. Opens in new tab.">
+        <a
+          href="https://archive.org"
+          target="blank"
+          class="link__archive"
+          title="Internet Archive. Opens in new tab."
+        >
           Internet Archive
         </a>
       </article>

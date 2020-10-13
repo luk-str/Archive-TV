@@ -1,5 +1,8 @@
 const reloadButton = document.getElementById("reloadButton");
 
+const okButton = document.getElementById("okButton");
+const welcomeContainer = document.getElementById("welcomeContainer");
+
 const titleText = document.getElementById("titleText");
 const sourceText = document.getElementById("sourceText");
 const yearMetadata = document.getElementById("yearMetadata");
@@ -32,16 +35,16 @@ const playerOptions = {
   },
 };
 
-function onPlayerLoaded() {
+okButton.onclick = () => {
+  welcomeContainer.classList.add("hidden");
   loadVideo();
-}
+  document.querySelector("nav").classList.add("visible");
+  document.querySelector("footer").classList.add("visible");
+  document.querySelector("main").classList.add("visible");
+};
 
 // Define Player Window
-const player = videojs(
-  document.querySelector(".video-js"),
-  playerOptions,
-  onPlayerLoaded
-);
+const player = videojs(document.querySelector(".video-js"), playerOptions);
 
 // Trigger Video Reload on Error
 player.on("error", () => {
@@ -60,6 +63,9 @@ reloadButton.onclick = () => {
 
 // Load Video
 async function loadVideo() {
+  document.querySelector("main").classList.add("hidden");
+  reloadButton.classList.add("hidden");
+  document.querySelector(".loading__container").classList.add("visible");
   player.pause();
   const response = await fetch(getSearchUrl());
   const data = await response.json();
@@ -71,6 +77,9 @@ async function loadVideo() {
 
   fillMetaData(filmMetadata);
   player.src(sourceList);
+  document.querySelector(".loading__container").classList.remove("visible");
+  document.querySelector("main").classList.remove("hidden");
+  reloadButton.classList.remove("hidden");
 }
 
 function fillMetaData(film) {
