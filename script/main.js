@@ -85,11 +85,11 @@ function fillMetaData(film) {
   sourceText.setAttribute("href", sourceUrl);
 
   if (year !== undefined) {
-    yearMetadata.innerHTML = `<h3 class="metadata__header" id="yearHeader">year:</h3>
+    yearMetadata.innerHTML = `<p class="metadata__header" id="yearHeader">year:</p>
     <span id="yearText" class="metadata__text">${year}</span>`;
   }
   if (description !== undefined) {
-    descriptionMetadata.innerHTML = `<h3 class="metadata__header" id="descriptionHeader">description:</h3>
+    descriptionMetadata.innerHTML = `<p class="metadata__header" id="descriptionHeader">description:</p>
     <span id="descriptionText" class="metadata__text">${description}</span>`;
   }
 }

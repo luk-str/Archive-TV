@@ -36,17 +36,15 @@
 
   <body>
     <header></header>
-    <nav>
-      <button id="reloadButton" class="btn-reload">↻</button>
+    <nav class="navigation">
+      <button id="reloadButton" class="button-nav">↻</button>
     </nav>
     <main>
+      <section class="title__container">
+        <span class="metadata__header title__header">Now playing:</span>
+        <span id="titleText" class="title"></span>
+      </section>
       <article class="player-container">
-        <section class="title__container">
-          <span class="metadata__header title__header"
-            ><h3>Now playing:</h3></span
-          >
-          <span id="titleText" class="title"></span>
-        </section>
         <video-js class="video-js vjs-matrix"></video-js>
       </article>
 
@@ -54,7 +52,7 @@
         <section id="descriptionMetadata"></section>
         <section id="yearMetadata"></section>
         <section class="metadata__source">
-          <h3 class="metadata__header" id="sourceHeader">source:</h3>
+          <p class="metadata__header" id="sourceHeader">source:</p>
           <span>
             <a href="" target="blank" id="sourceText"></a>
           </span>
