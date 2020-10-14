@@ -80,3 +80,15 @@
     border-top-color: #888;
   }
 }
+
+@media (max-width: 400px) {
+  .video-js {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 300px) {
+  .video-js {
+    font-size: 8px;
+  }
+}
