@@ -18,9 +18,7 @@ const collections = [
   "prelinger",
   "classic_tv",
   "classic_tv_commercials",
-  // "moodmusic",
   "movie_trailers",
-  // "home_movies",
   "FedFlix",
   "open_mind",
   "openmediaproject",
@@ -93,6 +91,7 @@ async function loadVideo() {
   document.querySelector("main").classList.add("hidden");
   reloadButton.classList.add("hidden");
   document.querySelector(".loading__container").classList.add("visible");
+  
   player.pause();
   const response = await fetch(getSearchUrl());
   const data = await response.json();

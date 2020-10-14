@@ -21,6 +21,7 @@
   --accent-color: #33f;
   --background-color: #eee;
 }
+
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -85,10 +86,6 @@ a {
   font-size: 1.3rem;
   color: var(--accent-color);
   font-family: "Karrik-regular", serif;
-}
-
-.metadata__header .emoji {
-  font-size: 0.8em;
 }
 
 .metadata {
@@ -233,4 +230,26 @@ footer {
   visibility: hidden;
   opacity: 0;
   transition: 0.1s;
+}
+
+@media (max-width: 400px) {
+  .metadata__header {
+    font-size: 0.9rem;
+  }
+  .metadata {
+    font-size: 0.65rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .title__header {
+    font-size: 0.6rem;
+    width: 2.8rem;
+  }
+  footer {
+    height: 3.5rem;
+  }
+  .footer__content {
+    font-size: 0.6rem;
+  }
 }
