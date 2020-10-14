@@ -76,7 +76,8 @@ a {
   transition-duration: 1s;
 }
 
-.button-reload:hover {
+.button-reload:hover,
+.button-reload:focus {
   transform: rotate(360deg);
   transition-duration: 0.3s;
 }
