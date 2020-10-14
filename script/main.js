@@ -80,6 +80,7 @@ async function loadVideo() {
   document.querySelector(".loading__container").classList.remove("visible");
   document.querySelector("main").classList.remove("hidden");
   reloadButton.classList.remove("hidden");
+  player.play();
 }
 
 function fillMetaData(film) {
