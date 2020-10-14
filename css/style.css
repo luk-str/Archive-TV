@@ -214,7 +214,7 @@ footer {
 .loading__symbol {
   margin: 1rem;
   font-size: 3rem;
-  animation: 1s loading-rotation infinite linear;
+  animation: 0.7s loading-rotation infinite linear;
 }
 
 @keyframes loading-rotation {
