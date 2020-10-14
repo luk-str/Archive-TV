@@ -9,17 +9,43 @@ const yearMetadata = document.getElementById("yearMetadata");
 const descriptionMetadata = document.getElementById("descriptionMetadata");
 
 // Search Options
-let searchPagesRange = 1000;
+let searchPagesRange = 100;
 const resultsAmount = 10;
 
-let collectionName = "moviesandfilms";
+const collections = [
+  "short_films",
+  "feature_films",
+  "prelinger",
+  "classic_tv",
+  "classic_tv_commercials",
+  // "moodmusic",
+  "movie_trailers",
+  // "home_movies",
+  "FedFlix",
+  "open_mind",
+  "openmediaproject",
+  "bliptv",
+  "educationalfilms",
+  "avgeeks",
+  "vhsvault",
+  "musicvideobin",
+];
+
+const randomCollectionName = () => {
+  const randomCollection =
+    collections[Math.floor(Math.random() * collections.length)];
+
+  console.log("Collection: " + randomCollection);
+
+  return randomCollection;
+};
 
 const randomPageNumber = () => {
   return Math.floor(Math.random() * searchPagesRange);
 };
 
 const getSearchUrl = () => {
-  const searchUrl = `https://archive.org/advancedsearch.php?q=-title:(filmcollectief,+stock+footage)+AND+collection:(${collectionName})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
+  const searchUrl = `https://archive.org/advancedsearch.php?q=collection:(${randomCollectionName()})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
 
   return searchUrl;
 };
@@ -47,7 +73,8 @@ okButton.onclick = () => {
 const player = videojs(document.querySelector(".video-js"), playerOptions);
 
 // Trigger Video Reload on Error
-player.on("error", () => {
+player.on("error", (err) => {
+  console.log(err);
   loadVideo();
 });
 
@@ -75,15 +102,21 @@ async function loadVideo() {
   const fileList = await getFileList(filmId);
   const sourceList = await getSourceList(fileList, filmId);
 
-  fillMetaData(filmMetadata);
   player.src(sourceList);
   document.querySelector(".loading__container").classList.remove("visible");
   document.querySelector("main").classList.remove("hidden");
   reloadButton.classList.remove("hidden");
-  player.play();
+
+  player
+    .play()
+    .then(fillMetaData(filmMetadata))
+    .catch((err) => console.log(err));
 }
 
 function fillMetaData(film) {
+  yearMetadata.innerHTML = "";
+  descriptionMetadata.innerHTML = "";
+
   const title = film.title;
   const year = film.year;
   const description = film.description;
