@@ -292,7 +292,19 @@ footer {
   }
   .title__header {
     font-size: 0.6rem;
-    width: 2.8rem;
+    width: 3.3rem;
+  }
+  .button-reload {
+    margin: 2rem auto 0 auto;
+  }
+  .welcome__box .welcome__header {
+    font-size: 0.8rem;
+  }
+  .welcome__box .welcome__text {
+    font-size: 0.8rem;
+  }
+  .button-ok {
+    font-size: 0.7rem;
   }
   footer {
     height: 3.5rem;
