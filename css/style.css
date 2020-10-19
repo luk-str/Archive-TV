@@ -104,7 +104,7 @@ a {
 footer {
   background: var(--accent-color);
   color: var(--background-color);
-  height: 6rem;
+  /* height: 6rem; */
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -120,12 +120,13 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   line-height: 1.5em;
 }
 
 .footer__content .developer {
   text-align: right;
+  max-width: 18em;
 }
 
 .footer__link {
@@ -289,4 +290,14 @@ footer {
   .footer__content {
     font-size: 0.5rem;
   }
+}
+
+.footer__developerinfo {
+  margin: 0;
+}
+.footer__fontinfo {
+  font-size: .7em;
+  line-height: 1.4em;
+  opacity: 0.7;
+  margin-bottom: 0em;
 }
