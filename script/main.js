@@ -1,17 +1,17 @@
-const reloadButton = document.getElementById("reloadButton");
-
-const okButton = document.getElementById("okButton");
 const welcomeContainer = document.getElementById("welcomeContainer");
-
+const okButton = document.getElementById("okButton");
+const nav = document.querySelector("nav");
+const main = document.querySelector("main");
+const footer = document.querySelector("footer");
+const reloadButton = document.getElementById("reloadButton");
+const loadingContainer = document.querySelector(".loading__container");
 const titleText = document.getElementById("titleText");
 const sourceText = document.getElementById("sourceText");
 const yearMetadata = document.getElementById("yearMetadata");
 const descriptionMetadata = document.getElementById("descriptionMetadata");
 
-// Search Options
-let searchPagesRange = 100;
-const resultsAmount = 10;
-
+const searchPagesRange = 100;
+const resultsPerPage = 10;
 const collections = [
   "short_films",
   "feature_films",
@@ -29,26 +29,6 @@ const collections = [
   "musicvideobin",
 ];
 
-const randomCollectionName = () => {
-  const randomCollection =
-    collections[Math.floor(Math.random() * collections.length)];
-
-  console.log("Collection: " + randomCollection);
-
-  return randomCollection;
-};
-
-const randomPageNumber = () => {
-  return Math.floor(Math.random() * searchPagesRange);
-};
-
-const getSearchUrl = () => {
-  const searchUrl = `https://archive.org/advancedsearch.php?q=collection:(${randomCollectionName()})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsAmount}&page=${randomPageNumber()}&output=json`;
-
-  return searchUrl;
-};
-
-// Player Options
 const playerOptions = {
   controls: true,
   preload: "auto",
@@ -59,62 +39,70 @@ const playerOptions = {
   },
 };
 
-okButton.onclick = () => {
-  welcomeContainer.classList.add("hidden");
-  loadVideo();
-  document.querySelector("nav").classList.add("visible");
-  document.querySelector("footer").classList.add("visible");
-  document.querySelector("main").classList.add("visible");
-};
-
-// Define Player Window
 const player = videojs(document.querySelector(".video-js"), playerOptions);
+player.on("ended", () => loadNewVideo());
+player.on("error", () => loadNewVideo());
 
-// Trigger Video Reload on Error
-player.on("error", (err) => {
-  console.log(err);
-  loadVideo();
-});
-
-// Trigger Video Reload on Video End
-player.on("ended", () => {
-  loadVideo();
-});
-
-// Handle Button Clicks
-reloadButton.onclick = () => {
-  loadVideo();
+okButton.onclick = () => {
+  hideWelcomeContainer();
+  loadNewVideo();
+  initializeInterface();
 };
+reloadButton.onclick = () => loadNewVideo();
 
-// Load Video
-async function loadVideo() {
-  document.querySelector("main").classList.add("hidden");
-  reloadButton.classList.add("hidden");
-  document.querySelector(".loading__container").classList.add("visible");
-  
+function hideWelcomeContainer() {
+  welcomeContainer.classList.add("hidden");
+}
+
+function initializeInterface() {
+  nav.classList.add("visible");
+  main.classList.add("visible");
+  footer.classList.add("visible");
+}
+
+async function loadNewVideo() {
+  hideInterface();
   player.pause();
+
   const response = await fetch(getSearchUrl());
   const data = await response.json();
-  const filmMetadata = data.response.docs[0];
-  const filmId = filmMetadata.identifier;
+  const videoMetadata = data.response.docs[0];
+  const videoId = videoMetadata.identifier;
 
-  const fileList = await getFileList(filmId);
-  const sourceList = await getSourceList(fileList, filmId);
+  const fileList = await getFileList(videoId);
+  const sourceList = getSourceList(fileList, videoId);
 
   player.src(sourceList);
-  document.querySelector(".loading__container").classList.remove("visible");
-  document.querySelector("main").classList.remove("hidden");
-  reloadButton.classList.remove("hidden");
 
   player
     .play()
-    .then(fillMetaData(filmMetadata))
+    .then(fillMetaData(videoMetadata))
     .catch((err) => console.log(err));
+
+  showInterface();
 }
 
+function hideInterface() {
+  main.classList.add("hidden");
+  reloadButton.classList.add("hidden");
+  loadingContainer.classList.add("visible");
+}
+
+function showInterface() {
+  loadingContainer.classList.remove("visible");
+  main.classList.remove("hidden");
+  reloadButton.classList.remove("hidden");
+}
+
+const getSearchUrl = () =>
+  `https://archive.org/advancedsearch.php?q=collection:(${getRandomCollection()})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsPerPage}&page=${getRandomPageNumber()}&output=json`;
+
+const getRandomPageNumber = () => Math.floor(Math.random() * searchPagesRange);
+const getRandomCollection = () =>
+  collections[Math.floor(Math.random() * collections.length)];
+
 function fillMetaData(film) {
-  yearMetadata.innerHTML = "";
-  descriptionMetadata.innerHTML = "";
+  resetMetadata();
 
   const title = film.title;
   const year = film.year;
@@ -136,6 +124,11 @@ function fillMetaData(film) {
   }
 }
 
+function resetMetadata() {
+  yearMetadata.innerHTML = "";
+  descriptionMetadata.innerHTML = "";
+}
+
 async function getFileList(filmId) {
   const response = await fetch(`https://archive.org/metadata/${filmId}/files`);
   const data = await response.json();
@@ -144,7 +137,7 @@ async function getFileList(filmId) {
   return fileList;
 }
 
-async function getSourceList(fileList, filmId) {
+function getSourceList(fileList, filmId) {
   let sourcesArray = [];
 
   fileList.forEach((file) => {
@@ -162,8 +155,7 @@ async function getSourceList(fileList, filmId) {
   });
 
   if (sourcesArray.length === 0) {
-    loadVideo();
-    console.log("No playable files found. Loading new video...");
+    loadNewVideo();
   } else {
     return sourcesArray;
   }
