@@ -156,41 +156,69 @@ footer {
   top: 50%;
   left: 50%;
   width: 50%;
-  max-width: 500px;
+  max-width: 440px;
   transform: translate(-50%, -50%);
   background: var(--background-color);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid var(--accent-color);
+  border: 2px solid #fff;
   font-size: 0.8rem;
-  background: #fff;
+  text-align: center;
 }
 
-.welcome__box h1 {
-  margin: 0;
+.welcome__box .welcome__header {
+  font-weight: 400;
+  margin: 2rem 0 3rem;
+  color: var(--accent-color);
+  position: relative;
 }
 
-.welcome__box p {
-  margin: 1rem 0 2rem;
+.welcome__box .welcome__header::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  width: 0%;
+  border-bottom: 1px solid var(--accent-color);
+  animation: welcome__header-underline-appear 1.4s forwards;
+}
+
+@keyframes welcome__header-underline-appear {
+  to {
+    width: 100%;
+  }
+}
+
+.welcome__box .welcome__text {
+  width: 100%;
 }
 
 .button-ok {
-  padding: 0.6em 2em;
+  font-size: 0.8rem;
+  margin: 2.5rem 0 1rem;
+  padding: 1.2em 1.5em;
   cursor: pointer;
   border: 2px solid var(--accent-color);
   background: none;
   color: var(--accent-color);
-  transition: 0.3s;
+  transition: 0.5s;
+  opacity: 0;
+  animation: button-ok-appear 1s ease-in 2s forwards;
+}
+
+@keyframes button-ok-appear {
+  to {
+    opacity: 1;
+  }
 }
 
 .button-ok:hover,
 .button-ok:focus {
   background: var(--accent-color);
   color: #fff;
-  transform: scale(1.1);
-  transition: 0.06s;
+  transition: 0.1s;
 }
 
 .loading__container {
