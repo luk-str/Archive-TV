@@ -222,8 +222,8 @@ footer {
 }
 
 .loading__container {
-  position: absolute;
-  top: 10rem;
+  position: fixed;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
