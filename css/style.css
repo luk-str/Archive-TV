@@ -104,7 +104,7 @@ a {
 footer {
   background: var(--accent-color);
   color: var(--background-color);
-  height: 4rem;
+  height: 6rem;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -114,13 +114,21 @@ footer {
 
 .footer__content {
   font-size: 0.8rem;
-  width: 80vw;
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.5em;
 }
 
-.link__archive {
+.footer__content .developer {
+  text-align: right;
+}
+
+.footer__link {
   color: var(--background-color);
 }
 
@@ -205,7 +213,7 @@ footer {
   color: var(--accent-color);
   transition: 0.5s;
   opacity: 0;
-  animation: button-ok-appear 1s ease-in 2s forwards;
+  animation: button-ok-appear 1s ease-in 1s forwards;
 }
 
 @keyframes button-ok-appear {
@@ -279,6 +287,6 @@ footer {
     height: 3.5rem;
   }
   .footer__content {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
 }

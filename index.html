@@ -80,13 +80,16 @@
         <span class="metadata__header title__header">Now playing:</span>
         <span id="titleText" class="title" aria-label="Video title"></span>
       </section>
+
       <article class="player-container">
         <video-js class="video-js vjs-matrix"></video-js>
       </article>
 
       <article class="metadata">
         <section id="descriptionMetadata"></section>
+
         <section id="yearMetadata"></section>
+
         <section class="metadata__source">
           <p class="metadata__header" id="sourceHeader">source:</p>
           <span>
@@ -100,17 +103,31 @@
         </section>
       </article>
     </main>
+
     <footer>
       <article class="footer__content">
-        Powered by
-        <a
-          href="https://archive.org"
-          target="blank"
-          class="link__archive"
-          title="Internet Archive. Opens in new tab."
-        >
-          Internet Archive
-        </a>
+        <section>
+          powered by<br />
+          <a
+            href="https://archive.org"
+            target="blank"
+            class="footer__link"
+            title="Internet Archive. Opens in new tab."
+          >
+            Internet Archive
+          </a>
+        </section>
+
+        <section class="developer">
+          code & design by
+          <a
+            href="https://github.com/luk-str"
+            target="blank"
+            title="Developer's website. Opens in new tab"
+            class="footer__link"
+            >Lukas Strociak</a
+          >
+        </section>
       </article>
     </footer>
   </body>
