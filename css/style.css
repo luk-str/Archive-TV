@@ -126,7 +126,6 @@ footer {
 
 .footer__content .developer {
   text-align: right;
-  max-width: 18em;
 }
 
 .footer__link {
@@ -258,6 +257,17 @@ footer {
   }
 }
 
+.footer__developerinfo {
+  margin: 0;
+}
+
+.footer__fontinfo {
+  font-size: 0.7em;
+  line-height: 1.4em;
+  opacity: 0.7;
+  margin-bottom: 0em;
+}
+
 .visible {
   visibility: visible;
   opacity: 1;
@@ -290,14 +300,7 @@ footer {
   .footer__content {
     font-size: 0.5rem;
   }
-}
-
-.footer__developerinfo {
-  margin: 0;
-}
-.footer__fontinfo {
-  font-size: .7em;
-  line-height: 1.4em;
-  opacity: 0.7;
-  margin-bottom: 0em;
+  .footer__content .developer {
+    max-width: 18em;
+  }
 }
