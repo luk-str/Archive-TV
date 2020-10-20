@@ -7,6 +7,9 @@
 Archive TV is a simple website that lets you explore the video library of Internet Archive, one random video at a time.
 
 See it running live at https://archivetv.netlify.app/
+
+### Project preview
+
 ![Project preview](img/project_preview.jpeg)
 
 ## How does it work?
