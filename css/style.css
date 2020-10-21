@@ -26,6 +26,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 nav,
 main,
 footer {
