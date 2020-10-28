@@ -70,8 +70,8 @@
         </p>
 
         <button
-          class="button-ok"
-          id="okButton"
+          class="btn btn--start"
+          id="startButton"
           aria-label="Start watching"
           title="Start watching"
         >
@@ -80,7 +80,7 @@
       </section>
     </article>
 
-    <article class="loading__container">
+    <article class="loading__container" id="loadingContainer">
       <p class="loading__symbol">↻</p>
       <p class="loading__text">Loading...</p>
     </article>
@@ -88,7 +88,7 @@
     <nav class="navigation">
       <button
         id="reloadButton"
-        class="button-reload"
+        class="btn btn--reload"
         aria-label="Load new video"
         title="Load new video"
       >
@@ -98,21 +98,25 @@
 
     <main>
       <section class="title__container">
-        <span class="metadata__header title__header">Now playing:</span>
-        <span id="titleText" class="title" aria-label="Video title"></span>
+        <span class="title__label">Now playing:</span>
+        <span
+          id="titleText"
+          class="title__text"
+          aria-label="Video title"
+        ></span>
       </section>
 
-      <article class="player-container">
+      <article class="player__container">
         <video class="video-js vjs-matrix" playsinline></video>
       </article>
 
-      <article class="metadata">
+      <article class="metadata__container">
         <section id="descriptionMetadata"></section>
 
         <section id="yearMetadata"></section>
 
-        <section class="metadata__source">
-          <p class="metadata__header" id="sourceHeader">source:</p>
+        <section class="metadata__source-section">
+          <p class="metadata__label" id="sourceHeader">source:</p>
           <span>
             <a
               href=""
@@ -139,7 +143,7 @@
           </a>
         </section>
 
-        <section class="developer">
+        <section class="footer__credits">
           <p class="footer__developerinfo">
             code & design by
             <a

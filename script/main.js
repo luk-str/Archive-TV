@@ -1,10 +1,10 @@
-const welcomeContainer = document.getElementById("welcomeContainer");
-const okButton = document.getElementById("okButton");
 const nav = document.querySelector("nav");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
+const welcomeContainer = document.getElementById("welcomeContainer");
+const startButton = document.getElementById("startButton");
 const reloadButton = document.getElementById("reloadButton");
-const loadingContainer = document.querySelector(".loading__container");
+const loadingContainer = document.getElementById("loadingContainer");
 const titleText = document.getElementById("titleText");
 const sourceText = document.getElementById("sourceText");
 const yearMetadata = document.getElementById("yearMetadata");
@@ -43,11 +43,12 @@ const player = videojs(document.querySelector(".video-js"), playerOptions);
 player.on("ended", () => loadNewVideo());
 player.on("error", () => loadNewVideo());
 
-okButton.onclick = () => {
+startButton.onclick = () => {
   hideWelcomeContainer();
   loadNewVideo();
   initializeInterface();
 };
+
 reloadButton.onclick = () => loadNewVideo();
 
 function hideWelcomeContainer() {
@@ -98,16 +99,17 @@ const getSearchUrl = () =>
   `https://archive.org/advancedsearch.php?q=collection:(${getRandomCollection()})+AND+mediatype:(movies)&sort[]=__random+desc&sort[]=&sort[]=&rows=${resultsPerPage}&page=${getRandomPageNumber()}&output=json`;
 
 const getRandomPageNumber = () => Math.floor(Math.random() * searchPagesRange);
+
 const getRandomCollection = () =>
   collections[Math.floor(Math.random() * collections.length)];
 
-function fillMetaData(film) {
+function fillMetaData(video) {
   resetMetadata();
 
-  const title = film.title;
-  const year = film.year;
-  const description = film.description;
-  const id = film.identifier;
+  const title = video.title;
+  const year = video.year;
+  const description = video.description;
+  const id = video.identifier;
   const sourceUrl = `https://archive.org/details/${id}`;
 
   titleText.textContent = title;
@@ -115,12 +117,13 @@ function fillMetaData(film) {
   sourceText.setAttribute("href", sourceUrl);
 
   if (year !== undefined) {
-    yearMetadata.innerHTML = `<p class="metadata__header" id="yearHeader">year:</p>
-    <span id="yearText" class="metadata__text">${year}</span>`;
+    yearMetadata.innerHTML = `<p class="metadata__label" >year:</p>
+    <span class="metadata__text">${year}</span>`;
   }
+
   if (description !== undefined) {
-    descriptionMetadata.innerHTML = `<p class="metadata__header" id="descriptionHeader">description:</p>
-    <span id="descriptionText" class="metadata__text">${description}</span>`;
+    descriptionMetadata.innerHTML = `<p class="metadata__label">description:</p>
+    <span class="metadata__text">${description}</span>`;
   }
 }
 
@@ -129,34 +132,37 @@ function resetMetadata() {
   descriptionMetadata.innerHTML = "";
 }
 
-async function getFileList(filmId) {
-  const response = await fetch(`https://archive.org/metadata/${filmId}/files`);
+async function getFileList(videoId) {
+  const fileListUrl = `https://archive.org/metadata/${videoId}/files`;
+
+  const response = await fetch(fileListUrl);
   const data = await response.json();
   const fileList = data.result;
 
   return fileList;
 }
 
-function getSourceList(fileList, filmId) {
-  let sourcesArray = [];
+function getSourceList(fileList, videoId) {
+  let sourceList = [];
+  const downloadUrl = `https://archive.org/download/${videoId}/`;
 
   fileList.forEach((file) => {
     if (file.format === "h.264" || file.format === "MPEG4") {
-      sourcesArray.push({
-        src: `https://archive.org/download/${filmId}/${file.name}`,
+      sourceList.push({
+        src: downloadUrl + file.name,
         type: "video/mp4",
       });
     } else if (file.format === "Ogg Video") {
-      sourcesArray.push({
-        src: `https://archive.org/download/${filmId}/${file.name}`,
+      sourceList.push({
+        src: downloadUrl + file.name,
         type: "video/ogg",
       });
     }
   });
 
-  if (sourcesArray.length === 0) {
+  if (sourceList.length === 0) {
     loadNewVideo();
   } else {
-    return sourcesArray;
+    return sourceList;
   }
 }
