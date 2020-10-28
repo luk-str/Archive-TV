@@ -291,7 +291,7 @@ footer {
   transition: 0.1s;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .metadata__header {
     font-size: 0.9rem;
   }
