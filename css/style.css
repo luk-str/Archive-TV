@@ -195,6 +195,7 @@ urls longer than container*/
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 0.8rem;
 }
 
 .title__container {
