@@ -42,6 +42,10 @@ const playerOptions = {
 const player = videojs(document.querySelector(".video-js"), playerOptions);
 player.on("ended", () => loadNewVideo());
 player.on("error", () => loadNewVideo());
+player.on("durationchange", () => {
+  showInterface();
+  player.play();
+});
 
 startButton.onclick = () => {
   hideWelcomeContainer();
@@ -74,13 +78,7 @@ async function loadNewVideo() {
   const sourceList = getSourceList(fileList, videoId);
 
   player.src(sourceList);
-
-  player
-    .play()
-    .then(fillMetaData(videoMetadata))
-    .catch((err) => console.log(err));
-
-  showInterface();
+  fillMetaData(videoMetadata);
 }
 
 function hideInterface() {
