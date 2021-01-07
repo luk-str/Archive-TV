@@ -11,7 +11,7 @@
   font-style: normal;
   font-display: swap;
   src: local("Karrik-regular"),
-    url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2"),
+    url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2");
 }
 
 :root {
