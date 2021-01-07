@@ -3,8 +3,7 @@
   font-style: normal;
   font-display: swap;
   src: local("Lack-regular"),
-    url("/fonts/Lack/Lack-Regular.woff2") format("woff2"),
-    url("/fonts/Lack/Lack-Regular.woff") format("woff");
+    url("/fonts/Lack/Lack-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -13,7 +12,6 @@
   font-display: swap;
   src: local("Karrik-regular"),
     url("/fonts/Karrik/Karrik-Regular.woff2") format("woff2"),
-    url("/fonts/Karrik/Karrik-Regular.woff") format("woff");
 }
 
 :root {
